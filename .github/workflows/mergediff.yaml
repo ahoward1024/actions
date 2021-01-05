@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 2
       - name: Get diff
-        run: git diff HEAD~2 -- A.txt > diff
+        run: git diff HEAD~1 -- A.txt > diff
       - name: Print diff
         run: cat diff
 
