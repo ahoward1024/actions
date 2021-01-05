@@ -1,0 +1,19 @@
+name: Merge Diff
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mergeDiff:
+    runs-on: ubuntu-20.04
+    if: ${{ github.event.pull_request.merged }} == 'true'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: Get diff
+        run: git diff HEAD~2 -- A.txt > diff
+      - name: Print diff
+        run: cat diff
+
